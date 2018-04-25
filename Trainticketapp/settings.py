@@ -15,8 +15,8 @@ import stripe
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'abhijitastlar@gmail.com'
-EMAIL_HOST_PASSWORD = 'abhi@7259444638'
+EMAIL_HOST_USER = 'youremail'
+EMAIL_HOST_PASSWORD = 'yourpassword'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

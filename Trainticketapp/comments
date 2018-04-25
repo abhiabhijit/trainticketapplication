@@ -1,0 +1,32 @@
+ # login, password = 'abhijitastlar@gmail.com', ''
+            # recipients = [to_email]
+            # message=render_to_string('auth/account_activation_email.html', {
+            #     'user': user,
+            #     'uid': user.pk,
+            #
+            # })
+            #
+            # # create message
+            # msg = MIMEText(
+            #     message,
+            #     'plain', 'utf-8')
+            # msg['Subject'] = Header('Please activate your Account', 'utf-8')
+            # msg['From'] = login
+            # msg['To'] = ", ".join(recipients)
+            #
+            # # send it via gmail
+            # s = SMTP_SSL('smtp.gmail.com', 465, timeout=10)
+            # s.set_debuglevel(1)
+
+
+
+
+
+# def test(request):
+#     send_mail(
+#         'Subject here',
+#         'Here is the message.',
+#         'abhijitastlar@gmail.com',
+#         ['harsha.gorremuchu@gmail.com'],
+#     )
+#     return HttpResponse('heylloo  ..')

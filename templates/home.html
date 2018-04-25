@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="YourJquery source path"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+
+</head>
+
+ <body>
+        <h2>Welcome {{ user.first_name }} {{ user.last_name }}</h2>
+
+        <h3>Book your ticket! </h3>
+        <form method="post" >
+            {% csrf_token  %}
+
+        <br> <input type="text" id="from" name=from placeholder="From " >
+        <input type="text" id="to" name="destination" placeholder="Destination City">
+        <br>
+
+        <input type="date" name=from>
+        <br>
+        <button type="button" class="btn-success">Submit</button>
+
+            </form>
+        <div class="fl search-box clearfix" style="border-color: rgb(210, 210, 210);">
+            <span class="fl icon-city icon">
+            </span>
+        <p></p>
+        </div>
+
+
+
+<!--        <ul>
+            <li><a href="http://brackets.io">Brackets.io</a></li>
+            <li><a href="http://blog.brackets.io">Brackets Team Blog</a></li>
+            <li><a href="https://github.com/adobe/brackets">Brackets on GitHub</a></li>
+            <li><a href="https://brackets-registry.aboutweb.com">Brackets Extension Registry</a></li>
+            <li><a href="https://github.com/adobe/brackets/wiki">Brackets Wiki</a></li>
+            <li><a href="https://groups.google.com/forum/#!forum/brackets-dev">Brackets Developer Mailing List</a></li>
+            <li><a href="https://twitter.com/brackets">@brackets on Twitter</a></li>
+            <li>Chat with Brackets developers on IRC in <a href="http://webchat.freenode.net/?channels=brackets&uio=d4">#brackets on Freenode</a></li>
+        </ul>
+-->
+    </body>
+
+    <script>
+$(document).ready(function(){
+var stop=0
+
+	$("#from").keyup(function(){
+	if( this.value.length != 3 ) return;
+		$.ajax({
+		type: "GET",
+		url: "https://api.railwayapi.com/v2/suggest-station/name/"+$(this).val()+"/apikey/dp9sdxkesa/",
+
+		success: function(data){
+		    console.log(data);
+
+
+		var limit=0
+		var info="HERE ARE THE STATION CODES MATCHING YOUR SEARCH"
+
+		for(var l in data.stations){
+		        limit=limit+1
+		      info=info+"\n\nSEARCH CODE FOR " + data.stations[l].name + " IS : " + data.stations[l].code;
+		      {if(stop==0){alert(info)} stop=1;return}
+
+
+		}
+    console.log(data)
+
+		}
+		});
+	});
+});
+$(document).ready(function(){
+var stop=0
+
+	$("#to").keyup(function(){
+	if( this.value.length != 3 ) return;
+		$.ajax({
+		type: "GET",
+		url: "https://api.railwayapi.com/v2/suggest-station/name/"+$(this).val()+"/apikey/dp9sdxkesa/",
+
+		success: function(data){
+
+		var limit=0
+		var info="HERE ARE THE STATION CODES MATCHING YOUR SEARCH"
+
+		for(var l in data.stations){
+		        limit=limit+1
+		      info=info+"\n\nSEARCH CODE FOR " + data.stations[l].name + " IS : " + data.stations[l].code;
+		      {if(stop==0){alert(info)} stop=1;}
+
+
+		}
+
+		}
+		});
+	});
+});
+
+console.log("Working");
+    </script>
+{% endblock %}

@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+<!--http://127.0.0.1:8000{% url 'ticketdetails' pnr=123456 %}-->
+<h2>Booked Ticket Details</h2>
+  <div class="datagrid">
+    <table>
+      <thead>
+        <tr>
+          <th width="50px"><strong>Train Name</strong></th>
+          <th width="50px"><strong>Ticket Id</strong></th>
+          <th width="50px"><strong>Journey Date</strong></th>
+           <th width="10px"><strong>Source City</strong></th>
+
+          <th width="10px"><strong>Destination City</strong></th>
+
+          <th width="25px"><strong>Number Of Passengers</strong></th>
+
+        </tr>
+      </thead>
+          {% for l in latest_bookings %}
+        <tr>
+          <td width="100px">{{ l.trainname}}</td>
+          <td width="100px">{{ l.pnr }}</td>
+          <td width="150px">{{ l.journey_date }}</td>
+          <td width="100px">{{ l.source }}</td>
+
+          <td width="100px">{{ l.destination }}</td>
+
+          <td width="100px">{{ l.no_of_passengers }}</td>
+
+
+
+
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}
